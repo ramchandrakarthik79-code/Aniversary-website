@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy 6 Months ❤️</title>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: url('background.jpg') repeat;
+  background-size: cover;
+  text-align: center;
+  overflow-x: hidden;
+}
+.container {
+  display: none;
+  padding: 40px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: fadeSlide 1s ease;
+}
+.active {display: flex;}
+.container h1 {color: #ff6b81; text-shadow: 2px 2px 5px rgba(0,0,0,0.3);}
+.container h2 {color: #6a5acd; text-shadow: 2px 2px 5px rgba(0,0,0,0.3);}
+.container p {color: #20c997; text-shadow: 2px 2px 5px rgba(0,0,0,0.3);}
+button {
+  margin: 15px; padding: 12px 30px; font-size: 18px; border: none; border-radius: 30px;
+  background: linear-gradient(135deg, #ff7eb3, #7afcff); color: #fff; cursor: pointer;
+  transition: 0.3s; box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+button:hover {transform: scale(1.05); background: linear-gradient(135deg, #7afcff, #ff7eb3);}
+@keyframes fadeSlide{0%{opacity:0;transform:translateY(20px);}100%{opacity:1;transform:translateY(0);}}
+.slideshow-container{position:relative;max-width:90%;margin:auto;overflow:hidden;}
+.mySlides{display:none;animation:zoomIn 10s ease forwards;}
+.mySlides img{width:100%;max-height:500px;object-fit:cover;border-radius:20px;box-shadow:0 4px 15px rgba(0,0,0,0.4);}
+@keyframes zoomIn{0%{transform:scale(1);}100%{transform:scale(1.1);}}
+.prev,.next{cursor:pointer;position:absolute;top:50%;width:auto;padding:16px;margin-top:-22px;color:white;font-weight:bold;font-size:30px;border-radius:0 3px 3px 0;user-select:none;text-shadow:2px 2px 5px rgba(0,0,0,0.5);}
+.next{right:0;border-radius:3px 0 0 3px;}
+.prev:hover,.next:hover{color:#ff7eb3;}
+.dot-container{text-align:center;margin-top:15px;}
+.dot{cursor:pointer;height:15px;width:15px;margin:0 5px;background-color:#ffb347;border-radius:50%;display:inline-block;transition:background-color 0.6s ease;}
+.active-dot,.dot:hover{background-color:#ff6b81;}
+#confettiCanvas{position:fixed;top:0;left:0;pointer-events:none;width:100%;height:100%;z-index:9999;}
+</style>
+</head>
+<body>
+<canvas id="confettiCanvas"></canvas>
+<div id="welcome" class="container active"><h1>🌸 Madam, please click the below button to continue 💖</h1><button onclick="showPage('question')">Continue</button></div>
+<div id="question" class="container"><h2>So before we begin, an important question...</h2><h1>Do you love me? ❤️</h1><button onclick="loveYes()">Yes</button><button onclick="loveNo()">No</button></div>
+<div id="yesLove" class="container"><h1>Love you too my pookie 😚</h1><button onclick="showPage('memories')">Please continue my dear 💕</button></div>
+<div id="noLove" class="container"><h2>Really? 😟</h2><button onclick="yesReally()">Yes really</button><button onclick="noJoking()">No I am joking, I love you</button></div>
+<div id="yesReallyPage" class="container"><h2>Okay 🥹</h2><p>Once again I am asking... Do you love me? 💞</p><button onclick="loveYes()">Yes</button></div>
+<div id="memories" class="container"><h2>🌸 Our Beautiful Memories ❤️</h2><div class="slideshow-container"><div class="mySlides fade"><img src="memory1.jpg" alt="Memory 1"></div><div class="mySlides fade"><img src="memory2.jpg" alt="Memory 2"></div><div class="mySlides fade"><img src="memory3.jpg" alt="Memory 3"></div><a class="prev" onclick="plusSlides(-1)">❮</a><a class="next" onclick="plusSlides(1)">❯</a></div><div class="dot-container"><span class="dot" onclick="currentSlide(1)"></span><span class="dot" onclick="currentSlide(2)"></span><span class="dot" onclick="currentSlide(3)"></span></div><button onclick="showPage('final')">➡️ Continue</button></div>
+<div id="final" class="container"><h1>🌸 Happy 6 Month Anniversary my love 💕</h1><h2>You are my blue orchid, rare and beautiful 🌺</h2></div>
+<script>
+function showPage(id){document.querySelectorAll('.container').forEach(el=>el.classList.remove('active'));document.getElementById(id).classList.add('active');if(id==='final')startConfetti();}
+function loveYes(){showPage('yesLove');}
+function loveNo(){showPage('noLove');}
+function yesReally(){showPage('yesReallyPage');}
+function noJoking(){showPage('yesLove');}
+let slideIndex=1;showSlides(slideIndex);function plusSlides(n){showSlides(slideIndex+=n);}function currentSlide(n){showSlides(slideIndex=n);}function showSlides(n){let i;let slides=document.getElementsByClassName("mySlides");let dots=document.getElementsByClassName("dot");if(n>slides.length){slideIndex=1}if(n<1){slideIndex=slides.length}for(i=0;i<slides.length;i++){slides[i].style.display="none";}for(i=0;i<dots.length;i++){dots[i].className=dots[i].className.replace(" active-dot","");}slides[slideIndex-1].style.display="block";dots[slideIndex-1].className+=" active-dot";}
+const canvas=document.getElementById('confettiCanvas');const ctx=canvas.getContext('2d');canvas.width=window.innerWidth;canvas.height=window.innerHeight;const confettiCount=150;const confetti=[];for(let i=0;i<confettiCount;i++){confetti.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*6+4,d:Math.random()*confettiCount,color:`hsl(${Math.random()*360},100%,50%)`,tilt:Math.random()*10-10,tiltAngleIncremental:Math.random()*0.07+0.05,tiltAngle:0});}
+function drawConfetti(){ctx.clearRect(0,0,canvas.width,canvas.height);for(let i=0;i<confettiCount;i++){const c=confetti[i];ctx.beginPath();ctx.lineWidth=c.r/2;ctx.strokeStyle=c.color;ctx.moveTo(c.x+c.tilt+c.r/4,c.y);ctx.lineTo(c.x+c.tilt,c.y+c.tilt+c.r/4);ctx.stroke();}updateConfetti();}
+function updateConfetti(){for(let i=0;i<confettiCount;i++){const c=confetti[i];c.tiltAngle+=c.tiltAngleIncremental;c.y+=(Math.cos(c.d)+1+c.r/2)/2;c.x+=Math.sin(0.01);c.tilt=Math.sin(c.tiltAngle)*12;if(c.y>canvas.height){c.y=-10;c.x=Math.random()*canvas.width;}}}
+let confettiActive=false;function startConfetti(){if(!confettiActive){confettiActive=true;(function animate(){if(confettiActive){drawConfetti();requestAnimationFrame(animate);}})();setTimeout(()=>{confettiActive=false;ctx.clearRect(0,0,canvas.width,canvas.height);},8000);}}
+window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;});
+</script>
+</body>
+</html>
