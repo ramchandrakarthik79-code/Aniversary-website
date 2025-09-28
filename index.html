@@ -9,7 +9,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: url('https://i.ibb.co/2N8yL0L/blue-orchid.png') repeat;
+  background: url('image.png') repeat;
   text-align: center;
   color: #fff;
   overflow-x: hidden;
@@ -57,7 +57,7 @@ button:hover {
   display: none;
   animation: zoomIn 10s ease forwards;
 }
-.mySlides img {
+.mySlides img, .mySlides video {
   width: 100%;
   max-height: 500px;
   object-fit: cover;
@@ -141,16 +141,36 @@ button:hover {
 <div id="memories" class="container">
   <h2>🌸 Our Beautiful Memories ❤️</h2>
   <div class="slideshow-container">
+    <!-- Images -->
     <div class="mySlides fade"><img src="memory1.jpg" alt="Memory 1"></div>
     <div class="mySlides fade"><img src="memory2.jpg" alt="Memory 2"></div>
     <div class="mySlides fade"><img src="memory3.jpg" alt="Memory 3"></div>
+
+    <!-- Videos -->
+    <div class="mySlides fade">
+      <video width="100%" height="auto" controls>
+        <source src="video1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="mySlides fade">
+      <video width="100%" height="auto" controls>
+        <source src="video2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <!-- Navigation -->
     <a class="prev" onclick="plusSlides(-1)">❮</a>
     <a class="next" onclick="plusSlides(1)">❯</a>
   </div>
+
   <div class="dot-container">
     <span class="dot" onclick="currentSlide(1)"></span>
     <span class="dot" onclick="currentSlide(2)"></span>
     <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+    <span class="dot" onclick="currentSlide(5)"></span>
   </div>
   <button onclick="showPage('final')">➡️ Continue</button>
 </div>
@@ -236,3 +256,4 @@ window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.heig
 
 </body>
 </html>
+
