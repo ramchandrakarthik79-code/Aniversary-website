@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy 6 Months ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+      background-attachment: fixed;
+      text-align: center;
+      color: #fff;
+    }
+    .container {
+      display: none;
+      padding: 40px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .active {
+      display: flex;
+    }
+    h1, h2, p {
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    }
+    button {
+      margin: 15px;
+      padding: 12px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #56ccf2, #2f80ed);
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+    button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #2f80ed, #56ccf2);
+    }
+    /* Slideshow */
+    .slideshow-container {
+      position: relative;
+      max-width: 90%;
+      margin: auto;
+    }
+    .mySlides {
+      display: none;
+    }
+    .mySlides img {
+      width: 100%;
+      max-height: 500px;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 16px;
+      margin-top: -22px;
+      color: white;
+      font-weight: bold;
+      font-size: 30px;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    }
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+    .prev:hover, .next:hover {
+      color: #56ccf2;
+    }
+    .dot-container {
+      text-align: center;
+      margin-top: 15px;
+    }
+    .dot {
+      cursor: pointer;
+      height: 15px;
+      width: 15px;
+      margin: 0 5px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+    .active-dot, .dot:hover {
+      background-color: #56ccf2;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://i.ibb.co/2N8yL0L/blue-orchid.png');
+      background-size: 200px;
+      background-repeat: repeat;
+      opacity: 0.08;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Welcome Page -->
+  <div id="welcome" class="container active">
+    <h1>🌸 Madam, please click the below button to continue 💖</h1>
+    <button onclick="showPage('question')">Continue</button>
+  </div>
+
+  <!-- First Question -->
+  <div id="question" class="container">
+    <h2>So before we begin, an important question...</h2>
+    <h1>Do you love me? ❤️</h1>
+    <button onclick="loveYes()">Yes</button>
+    <button onclick="loveNo()">No</button>
+  </div>
+
+  <!-- If Yes -->
+  <div id="yesLove" class="container">
+    <h1>Love you too my pookie 😚</h1>
+    <button onclick="showPage('memories')">Please continue my dear 💕</button>
+  </div>
+
+  <!-- If No -->
+  <div id="noLove" class="container">
+    <h2>Really? 😟</h2>
+    <button onclick="yesReally()">Yes really</button>
+    <button onclick="noJoking()">No I am joking, I love you</button>
+  </div>
+
+  <!-- If No -> Yes Really -->
+  <div id="yesReallyPage" class="container">
+    <h2>Okay 🥹</h2>
+    <p>Once again I am asking... Do you love me? 💞</p>
+    <button onclick="loveYes()">Yes</button>
+  </div>
+
+  <!-- Memories Page -->
+  <div id="memories" class="container">
+    <h2>🌸 Our Beautiful Memories ❤️</h2>
+    <div class="slideshow-container">
+      <div class="mySlides fade">
+        <img src="https://drive.google.com/uc?export=view&id=1MqLQkvHGr9asQ-CN-bzzjR4YZXEswiE1" alt="Memory 1">
+      </div>
+      <div class="mySlides fade">
+        <img src="https://drive.google.com/uc?export=view&id=1U1Id5vMvA4XAHwT5YOkHQ1hUwjwdflfh" alt="Memory 2">
+      </div>
+      <div class="mySlides fade">
+        <img src="https://drive.google.com/uc?export=view&id=10DcMJh0nwTldxMoRSJVs9sLRpuV1CyUb" alt="Memory 3">
+      </div>
+      <a class="prev" onclick="plusSlides(-1)">❮</a>
+      <a class="next" onclick="plusSlides(1)">❯</a>
+    </div>
+    <div class="dot-container">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+    <button onclick="showPage('final')">➡️ Continue</button>
+  </div>
+
+  <!-- Final Page -->
+  <div id="final" class="container">
+    <h1>🌸 Happy 6 Month Anniversary my love 💕</h1>
+    <h2>You are my blue orchid, rare and beautiful 🌺</h2>
+  </div>
+
+  <script>
+    function showPage(id) {
+      document.querySelectorAll('.container').forEach(el => el.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+    function loveYes() { showPage('yesLove'); }
+    function loveNo() { showPage('noLove'); }
+    function yesReally() { showPage('yesReallyPage'); }
+    function noJoking() { showPage('yesLove'); }
+
+    let slideIndex = 1;
+    showSlides(slideIndex);
+    function plusSlides(n) { showSlides(slideIndex += n); }
+    function currentSlide(n) { showSlides(slideIndex = n); }
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      let dots = document.getElementsByClassName("dot");
+      if (n > slides.length) {slideIndex = 1}
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
+      for (i = 0; i < dots.length; i++) { dots[i].className = dots[i].className.replace(" active-dot", ""); }
+      slides[slideIndex-1].style.display = "block";
+      dots[slideIndex-1].className += " active-dot";
+    }
+  </script>
+</body>
+</html>
